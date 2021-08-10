@@ -1,6 +1,8 @@
 const Koa = require("koa");
 const Router = require('koa-router');
 
+const api = require('./api');
+
 const app = new Koa();
 const router = new Router();
 
@@ -27,6 +29,7 @@ app.use(ctx => {
 });
 */
 
+/* router practice
 //router set up
 router.get('/', ctx => {
     ctx.body = 'Home';
@@ -41,6 +44,9 @@ router.get('/posts', ctx => {
     const { id } = ctx.query;
     ctx.body = id ? `Post #${id}` : 'There is no Post'
 })
+*/
+
+router.use('/api', api.routes());
 
 app.use(router.routes()).use(router.allowedMethods());
 
