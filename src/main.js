@@ -11,7 +11,7 @@ import api from './api';
 mongoose
  .connect(MONGO_URI, { useNewUrlParser: true, useFindAndModify: false })
   .then(() => {
-      console.log("Conected to MongoDB")
+      console.log("Conected to MongoDB");
   })
   .catch(e => {
       console.error(e)
