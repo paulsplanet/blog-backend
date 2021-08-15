@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 const { PORT, MONGO_URI } = process.env;
 
 import api from './api';
+import jwtMiddleware from './lib/jwtMiddleware';
 
 mongoose
  .connect(MONGO_URI, { useNewUrlParser: true, useFindAndModify: false })
@@ -25,6 +26,7 @@ router.use('/api', api.routes());
 
 // apply bodyParser
 app.use(bodyParser());
+app.use(jwtMiddleware);
 
 // apply router on app
 app.use(router.routes()).use(router.allowedMethods());
